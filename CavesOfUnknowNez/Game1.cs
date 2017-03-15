@@ -10,8 +10,8 @@ namespace CavesOfUnknowNez
     /// </summary>
     public class Game1 : Core
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+       // GraphicsDeviceManager graphics;
+        //SpriteBatch spriteBatch;
         
         public Game1() : base(width:1280,height:768,isFullScreen: false,enableEntitySystems: false)
 
