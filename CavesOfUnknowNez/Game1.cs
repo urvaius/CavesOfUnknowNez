@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CavesOfUnknowNez.Scenes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Nez;
@@ -33,23 +34,28 @@ namespace CavesOfUnknowNez
 
             base.Initialize();
             Window.AllowUserResizing = true;
-            var myScene = Scene.createWithDefaultRenderer(Color.CornflowerBlue);
+            //var myScene = Scene.createWithDefaultRenderer(Color.CornflowerBlue);
             
-
-
-            var texture = myScene.content.Load<Texture2D>("Graphics/player");
+            //var texture = myScene.content.Load<Texture2D>("Graphics/player");
 
             // setup our Scene by adding some Entities
-            var entityOne = myScene.createEntity("entity-one");
-            entityOne.addComponent(new Sprite(texture));
+           // var entityOne = myScene.createEntity("entity-one");
+           // entityOne.addComponent(new Sprite(texture));
 
-            var entityTwo = myScene.createEntity("entity-two");
-            entityTwo.addComponent(new Sprite(texture));
+           // var entityTwo = myScene.createEntity("entity-two");
+           // entityTwo.addComponent(new Sprite(texture));
 
             // move entityTwo to a new location so it isn't overlapping entityOne
-            entityTwo.transform.position = new Vector2(200, 200);
-            scene = myScene;
-            
+           // entityTwo.transform.position = new Vector2(200, 200);
+            //scene = myScene;
+            //do butterscene
+            var butterScene = new ButterScene();
+            butterScene.clearColor = Color.DarkGreen;
+            butterScene.addRenderer(new DefaultRenderer(0, null));
+
+            scene = butterScene;
+
+
         }
 
         /// <summary>
