@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using CavesOfUnknowNez.Entities;
 using CavesOfUnknowNez.Scenes;
 using static Nez.Scene;
 
@@ -18,7 +18,7 @@ namespace CavesOfUnknowNez.Scenes
 	{
 
 
-                
+				
 				public ButterScene()
 				{
 			
@@ -37,31 +37,30 @@ namespace CavesOfUnknowNez.Scenes
 
 
 
-            //var myScene = Scene.createWithDefaultRenderer(Color.Black);
+			//var myScene = Scene.createWithDefaultRenderer(Color.Black);
 
-            initiatePlayer();
+			initiatePlayer();
 
-            
+			
 
 			//scene = myScene;
 
 			}
 
-        private void initiatePlayer()
-        {
-            var playerTexture = content.Load<Texture2D>("Graphics/player");
+		private void initiatePlayer()
+		{
+			//var playerTexture = content.Load<Texture2D>("Graphics/player");
 
-            
-            
-            var playerOne = createEntity("Player1");
+			
+			
+			//var playerOne = createEntity("Player1");
+			//playerOne.addComponent(new Sprite(playerTexture));
 
-            playerOne.addComponent(new Sprite(playerTexture));
+			////add movement simple mover
+			//playerOne.addComponent(new SimpleMover());
+			//playerOne.addComponent(new DamageComponent());
 
-            //add movement simple mover
-            playerOne.addComponent(new SimpleMover());
-            playerOne.addComponent(new DamageComponent());
-
-            playerOne.transform.position = new Vector2(200, 200);
-        }
-    }
+			//playerOne.transform.position = new Vector2(200, 200);
+		}
+	}
 }
