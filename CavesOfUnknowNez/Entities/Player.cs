@@ -125,7 +125,7 @@ namespace CavesOfUnknowNez.Entities
 			_xAxisInput.nodes.Add(new Nez.VirtualAxis.GamePadDpadLeftRight());
 			_xAxisInput.nodes.Add(new Nez.VirtualAxis.GamePadLeftStickX());
 			_xAxisInput.nodes.Add(new Nez.VirtualAxis.KeyboardKeys(VirtualInput.OverlapBehavior.TakeNewer, Keys.Left, Keys.Right));
-
+			_xAxisInput.nodes.Add(new Nez.VirtualAxis.KeyboardKeys(VirtualInput.OverlapBehavior.TakeNewer, Keys.A, Keys.D));
 
 
 		}

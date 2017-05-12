@@ -21,17 +21,17 @@ public class DamageComponent : Component
 	public void takeDamage()
 		{
 		// reduce the SimpleMovers speed
-		_mover.speed = 70f;
+		_mover._speed = 70f;
 
 		// use the TimerManager to schedule a callback after 2 seconds have elapsed
-		Core.schedule(2f, t => _mover.speed = 100f);
+		Core.schedule(2f, t => _mover._speed = 100f);
 		}
 
 
 	public void takeDamageTwo()
 		{
 		// reduce the SimpleMovers speed
-		_mover.speed = 70f;
+		_mover._speed = 70f;
 
 		// use a coroutine to reset the SimpleMovers speed after 2 seconds have elapsed
 		Core.startCoroutine(resetSpeedAfterDelay());
@@ -44,6 +44,6 @@ public class DamageComponent : Component
 		yield return Coroutine.waitForSeconds(2f);
 
 		// reset the speed
-		_mover.speed = 100f;
+		_mover._speed = 100f;
 		}
 	}
