@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Nez.Tiled;
 using Nez;
+using CavesOfUnknowNez;
 
 namespace CavesOfUnknowNez.Entities
 {
