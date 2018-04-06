@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Nez.BitmapFonts;
 
@@ -122,6 +122,19 @@ namespace Nez.UI
 			if( ( edge & MOVE ) != 0 )
 			{
 				float amountX = mousePos.X - startX, amountY = mousePos.Y - startY;
+
+				if( clampPosition )
+				{
+					if( windowX + amountX < 0 )
+						amountX = -windowX;
+					if( windowY + amountY < 0 )
+						amountY = -windowY;
+					if( windowX + width + amountX > parentWidth )
+						amountX = parentWidth - windowX - width;
+					if( windowY + height + amountY > parentHeight )
+						amountY = parentHeight - windowY - height;
+				}
+
 				windowX += amountX;
 				windowY += amountY;
 			}
@@ -184,7 +197,7 @@ namespace Nez.UI
 		#endregion
 
 
-		public void setStyle( WindowStyle style )
+		public Window setStyle( WindowStyle style )
 		{
 			this.style = style;
 			setBackground( style.background );
@@ -195,6 +208,7 @@ namespace Nez.UI
 			titleLabel.setStyle( labelStyle );
 
 			invalidateHierarchy();
+			return this;
 		}
 
 
@@ -230,6 +244,8 @@ namespace Nez.UI
 
 		public override void draw( Graphics graphics, float parentAlpha )
 		{
+            keepWithinStage();
+
 			if( style.stageBackground != null )
 			{
 				var stagePos = stageToLocalCoordinates( Vector2.Zero );
@@ -243,7 +259,7 @@ namespace Nez.UI
 
 		protected void drawStageBackground( Graphics graphics, float parentAlpha, float x, float y, float width, float height )
 		{
-			style.stageBackground.draw( graphics, x, y, width, height, new Color( color, color.A * parentAlpha ) );
+			style.stageBackground.draw( graphics, x, y, width, height, new Color( color, (int)(color.A * parentAlpha) ) );
 		}
 
 
@@ -261,44 +277,23 @@ namespace Nez.UI
 
 		public override Element hit( Vector2 point )
 		{
-			// TODO: is this correct? should we be transforming the point here?
-			if( !hasParent() )
-				point = stageToLocalCoordinates( point );
-
 			var hit = base.hit( point );
 			if( hit == null || hit == this )
 				return hit;
 
-			var height = getHeight();
-			if( y <= height && y >= height - getPadTop() && x >= 0 && x <= getWidth() )
+			if( point.Y >= 0 && point.Y <= getPadTop() && point.X >= 0 && point.X <= width )
 			{
 				// Hit the title bar, don't use the hit child if it is in the Window's table.
 				Element current = hit;
 				while( current.getParent() != this )
 					current = current.getParent();
-				
+
 				if( getCell( current ) != null )
 					return this;
 			}
 			return hit;
 		}
-
-
-		protected override void positionChanged()
-		{
-			base.positionChanged();
-
-			keepWithinStage();
-		}
-
-
-		protected override void sizeChanged()
-		{
-			base.sizeChanged();
-
-			keepWithinStage();
-		}
-
+        
 
 		public bool isMovable()
 		{

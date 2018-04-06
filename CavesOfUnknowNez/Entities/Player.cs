@@ -14,7 +14,7 @@ namespace CavesOfUnknowNez.Entities
 	{
 
 		public float moveSpeed = 150;
-		public float gravity = 100;
+		public float gravity = 150;
 		public float jumpHeight = 16 * 5;
 
 		enum Animations
@@ -117,7 +117,7 @@ namespace CavesOfUnknowNez.Entities
 		{
 			// setup input for jumping. we will allow z on the keyboard or a on the gamepad
 			_jumpInput = new VirtualButton();
-			_jumpInput.nodes.Add(new Nez.VirtualButton.KeyboardKey(Keys.Z));
+			_jumpInput.nodes.Add(new Nez.VirtualButton.KeyboardKey(Keys.Space));
 			_jumpInput.nodes.Add(new Nez.VirtualButton.GamePadButton(0, Buttons.A));
 
 			// horizontal input from dpad, left stick or keyboard left/right

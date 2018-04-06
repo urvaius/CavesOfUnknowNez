@@ -48,6 +48,7 @@ namespace CavesOfUnknowNez.Scenes
 			playerEntity.addComponent(new Player());
 			playerEntity.addComponent(new BoxCollider(-8, -16, 16, 32));
 			playerEntity.addComponent(new TiledMapMover(tiledMapComponent.collisionLayer));
+			
 			//addPostProcessor(new VignettePostProcessor(1));
 
 

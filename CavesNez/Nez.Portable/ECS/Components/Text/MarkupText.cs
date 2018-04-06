@@ -129,7 +129,7 @@ namespace Nez
 				return;
 			
 			for( var i = 0; i < _compiledMarkup.Count; i++ )
-				_compiledMarkup[i].render( graphics, transform.position );
+				_compiledMarkup[i].render( graphics, transform.position + _localOffset );
 		}
 
 
@@ -314,7 +314,7 @@ namespace Nez
 						var currentWordFits = position.X + wordRunSize + wordSize.X <= _textWidth;
 
 						// if there is only one word and it doesnt fit we are gonna add it anyway else we will have nothing to show
-						if( wordRunSize == 0 && !currentWordFits )
+						if( words.Length == 0 && !currentWordFits )
 							currentWordFits = true;
 
 						if( currentWordFits )
